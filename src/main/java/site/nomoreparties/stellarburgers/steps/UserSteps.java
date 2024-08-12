@@ -19,8 +19,13 @@ public class UserSteps {
         user.setName(RandomStringUtils.randomAlphabetic(9));
     }
 
+    @Step("Невалидный пароль")
+    public void userInCorrectPass(UserModel user){
+        user.setPassword(RandomStringUtils.randomAlphabetic(3));
+    }
+
     @Step("Извлечение токена авторизации")
-    public static void takingAccessToken(UserModel user) {
+    public void takingAccessToken(UserModel user) {
         String accessToken = loginUser(user).extract()
                 .body().path("accessToken");
         user.setAccessToken(accessToken);
@@ -28,7 +33,7 @@ public class UserSteps {
 
     @Step("Создать нового пользователя")
     public ValidatableResponse createUser(UserModel user) {
-        return given()
+         return given()
                 .contentType(ContentType.JSON)
                 .baseUri(TEST_STAND)
                 .body(user)

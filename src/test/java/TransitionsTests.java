@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static site.nomoreparties.stellarburgers.commons.EpAndApi.TEST_STAND;
 
-public class TransitionsTests extends CommonsForTests {
+public class TransitionsTests extends BaseTest {
 
     @Before
     public void setUpsForTest(){

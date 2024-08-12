@@ -3,12 +3,12 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import site.nomoreparties.stellarburgers.pageObjects.RestorePassPage;
-import site.nomoreparties.stellarburgers.pageObjects.SignUpPage;
+import site.nomoreparties.stellarburgers.page.objects.RestorePassPage;
+import site.nomoreparties.stellarburgers.page.objects.SignUpPage;
 
 import static site.nomoreparties.stellarburgers.commons.EpAndApi.TEST_STAND;
 
-public class LogInLogOutTests extends CommonsForTests{
+public class LogInLogOutTests extends BaseTest {
 
     private SignUpPage signUpPage;
     private RestorePassPage restorePassPage;

@@ -1,4 +1,4 @@
-package site.nomoreparties.stellarburgers.pageObjects;
+package site.nomoreparties.stellarburgers.page.objects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -15,12 +15,10 @@ public class MainPage {
     private final By headerLogInButton = By.xpath(".//*[text()='Личный Кабинет']");
     private final By mainPageLogInButton = By.xpath(".//*[text()='Войти в аккаунт']");
     private final By mainPageBuildOrderButton = By.xpath(".//*[text()='Оформить заказ']");
-    private final By bunButtonTab = By.xpath(".//span[text()='Булки']");
-    private final By sauceButtonTab = By.xpath(".//span[text()='Соусы']");
-    private final By fillingButtonTab = By.xpath(".//span[text()='Начинки']");
-    private final By orderBunChoice = By.xpath(".//*[text()='Краторная булка N-200i']");
-    private final By orderSauceChoice = By.xpath(".//*[text()='Соус с шипами Антарианского плоскоходца']");
-    private final By orderFillingChoice = By.xpath(".//*[text()='Соус с шипами Антарианского плоскоходца']");
+    private final By bunButtonTab = By.xpath(".//*[contains(@class, \"tab_tab__1SPyG\")][1]");
+    private final By sauceButtonTab = By.xpath(".//*[contains(@class, \"tab_tab__1SPyG\")][2]");
+    private final By fillingButtonTab = By.xpath(".//*[contains(@class, \"tab_tab__1SPyG\")][3]");
+    private final String currentTabCheck = ("tab_tab_type_current__2BEPc");
 
     public MainPage(WebDriver driver){
         this.driver = driver;
@@ -52,23 +50,23 @@ public class MainPage {
         driver.findElement(fillingButtonTab).click();
         driver.findElement(bunButtonTab).click();
         WebElement bun = new WebDriverWait(driver, Duration.ofSeconds(6))
-                .until(ExpectedConditions.visibilityOfElementLocated(orderBunChoice));
-        return bun.isDisplayed();
+                .until(ExpectedConditions.visibilityOfElementLocated(bunButtonTab));
+        return bun.getAttribute("class").contains(currentTabCheck);
     }
 
     @Step("Проверка перехода ко вкладке 'Соусы' и нажатие на элемент вкладки")
     public boolean sauceButtonConstructor(){
         driver.findElement(sauceButtonTab).click();
         WebElement sauce = new WebDriverWait(driver, Duration.ofSeconds(6))
-                .until(ExpectedConditions.visibilityOfElementLocated(orderSauceChoice));
-        return sauce.isDisplayed();
+                .until(ExpectedConditions.visibilityOfElementLocated(sauceButtonTab));
+        return sauce.getAttribute("class").contains(currentTabCheck);
     }
 
     @Step("Проверка перехода ко вкладке 'Начинки' и нажатие на элемент вкладки")
     public boolean fillingButtonConstructor(){
         driver.findElement(fillingButtonTab).click();
         WebElement filling = new WebDriverWait(driver, Duration.ofSeconds(6))
-                .until(ExpectedConditions.visibilityOfElementLocated(orderFillingChoice));
-        return filling.isDisplayed();
+                .until(ExpectedConditions.visibilityOfElementLocated(fillingButtonTab));
+        return filling.getAttribute("class").contains(currentTabCheck);
     }
 }

@@ -3,12 +3,12 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import site.nomoreparties.stellarburgers.commons.WebDriverFactory;
 import site.nomoreparties.stellarburgers.models.UserModel;
-import site.nomoreparties.stellarburgers.pageObjects.LoginPage;
-import site.nomoreparties.stellarburgers.pageObjects.MainPage;
-import site.nomoreparties.stellarburgers.pageObjects.ProfilePage;
+import site.nomoreparties.stellarburgers.page.objects.LoginPage;
+import site.nomoreparties.stellarburgers.page.objects.MainPage;
+import site.nomoreparties.stellarburgers.page.objects.ProfilePage;
 import site.nomoreparties.stellarburgers.steps.UserSteps;
 
-public class CommonsForTests {
+public class BaseTest {
 
     protected static WebDriver driver;
     protected static UserModel user;

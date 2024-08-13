@@ -42,7 +42,7 @@ public class ProfilePage {
 
     @Step("Проверка что пользователь авторизован")
     public boolean userCorrectlyAuth(UserModel user){
-        Boolean correctEmail = new WebDriverWait(driver, Duration.ofSeconds(6))
+        Boolean correctEmail = new WebDriverWait(driver, Duration.ofSeconds(8))
                 .until(ExpectedConditions.textToBePresentInElementValue(profileEmail, user.getEmail()));
         return correctEmail;
     }

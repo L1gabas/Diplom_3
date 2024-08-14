@@ -1,11 +1,10 @@
-package site.nomoreparties.stellarburgers.page.objects;
+package site.nomoreparties.stellarburgers.pageobjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import site.nomoreparties.stellarburgers.models.UserModel;
 
 import java.time.Duration;
 
@@ -36,11 +35,11 @@ public class LoginPage {
 
 
     @Step("Заполнение данных для входа в Личный кабинет")
-    public void fillUsersDataToLogIn(UserModel user){
-        new WebDriverWait(driver, Duration.ofSeconds(6))
+    public void fillUsersDataToLogIn(String userEmail, String userPass){
+        new WebDriverWait(driver, Duration.ofSeconds(8))
                 .until(ExpectedConditions.visibilityOfElementLocated(enterButton));
-        driver.findElement(inputStringEmail).sendKeys(user.getEmail());
-        driver.findElement(inputStringPassword).sendKeys(user.getPassword());
+        driver.findElement(inputStringEmail).sendKeys(userEmail);
+        driver.findElement(inputStringPassword).sendKeys(userPass);
         driver.findElement(enterButton).click();
     }
 

@@ -3,9 +3,9 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import site.nomoreparties.stellarburgers.commons.WebDriverFactory;
 import site.nomoreparties.stellarburgers.models.UserModel;
-import site.nomoreparties.stellarburgers.page.objects.LoginPage;
-import site.nomoreparties.stellarburgers.page.objects.MainPage;
-import site.nomoreparties.stellarburgers.page.objects.ProfilePage;
+import site.nomoreparties.stellarburgers.pageobjects.LoginPage;
+import site.nomoreparties.stellarburgers.pageobjects.MainPage;
+import site.nomoreparties.stellarburgers.pageobjects.ProfilePage;
 import site.nomoreparties.stellarburgers.steps.UserSteps;
 
 public class BaseTest {

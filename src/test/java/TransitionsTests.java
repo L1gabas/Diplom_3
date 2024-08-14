@@ -22,9 +22,9 @@ public class TransitionsTests extends BaseTest {
     @Description("Проверка перехода по кнопке 'Личный кабинет'")
     public void transitionsFromMainPageLogInButton(){
         mainPage.clickOnMainPageLogInButton();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
-        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user));
+        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user.getEmail()));
     }
 
     @Test
@@ -32,7 +32,7 @@ public class TransitionsTests extends BaseTest {
     @Description("Проверка перехода по кнопке 'Конструктор'")
     public void transitionsFromConstructorButton() {
         mainPage.clickOnMainPageLogInButton();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
         profilePage.clickOnConstructorButtonOnProfilePage();
         Assert.assertTrue("Кнопка 'Оформить заказ' отсутствует", mainPage.visibilityBuildOrderButton());
@@ -43,7 +43,7 @@ public class TransitionsTests extends BaseTest {
     @Description("Проверка перехода по нажатию на логотип Stellar Burgers")
     public void transitionsFromLogoSB() {
         mainPage.clickOnMainPageLogInButton();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
         profilePage.clickOnStellarLogo();
         Assert.assertTrue("Кнопка 'Оформить заказ' отсутствует", mainPage.visibilityBuildOrderButton());

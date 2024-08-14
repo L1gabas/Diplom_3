@@ -1,11 +1,10 @@
-package site.nomoreparties.stellarburgers.page.objects;
+package site.nomoreparties.stellarburgers.pageobjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import site.nomoreparties.stellarburgers.models.UserModel;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
@@ -35,19 +34,12 @@ public class SignUpPage {
     }
 
     @Step("Заполнение данных пользователя")
-    public void fillUsersData(UserModel user){
+    public void fillUsersData(String userName, String userEmail, String userPass){
         new WebDriverWait(driver, Duration.ofSeconds(6))
                 .until(ExpectedConditions.elementToBeClickable(inputStringSingUpPagePassword));
-        driver.findElement(inputStringSingUpPageName).sendKeys(user.getName());
-        driver.findElement(inputStringSingUpPageEmail).sendKeys(user.getEmail());
-        driver.findElement(inputStringSingUpPagePassword).sendKeys(user.getPassword());
-    }
-
-    @Step("Ввод некорректного пароля")
-    public void incorrectPassInput(UserModel user){
-        new WebDriverWait(driver, Duration.ofSeconds(6))
-                .until(ExpectedConditions.elementToBeClickable(inputStringSingUpPagePassword));
-        driver.findElement(inputStringSingUpPagePassword).sendKeys(user.getPassword());
+        driver.findElement(inputStringSingUpPageName).sendKeys(userName);
+        driver.findElement(inputStringSingUpPageEmail).sendKeys(userEmail);
+        driver.findElement(inputStringSingUpPagePassword).sendKeys(userPass);
     }
 
     @Step("Проверка отображения сообщения при вводе невалидного пароля")

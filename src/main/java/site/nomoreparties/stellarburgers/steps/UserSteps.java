@@ -17,11 +17,7 @@ public class UserSteps {
                 .toLowerCase()) + "@yandex.ru");
         user.setPassword(RandomStringUtils.randomAlphabetic(14));
         user.setName(RandomStringUtils.randomAlphabetic(9));
-    }
 
-    @Step("Невалидный пароль")
-    public void userInCorrectPass(UserModel user){
-        user.setPassword(RandomStringUtils.randomAlphabetic(3));
     }
 
     @Step("Извлечение токена авторизации")

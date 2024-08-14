@@ -3,8 +3,8 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import site.nomoreparties.stellarburgers.page.objects.RestorePassPage;
-import site.nomoreparties.stellarburgers.page.objects.SignUpPage;
+import site.nomoreparties.stellarburgers.pageobjects.RestorePassPage;
+import site.nomoreparties.stellarburgers.pageobjects.SignUpPage;
 
 import static site.nomoreparties.stellarburgers.commons.EpAndApi.TEST_STAND;
 
@@ -12,6 +12,7 @@ public class LogInLogOutTests extends BaseTest {
 
     private SignUpPage signUpPage;
     private RestorePassPage restorePassPage;
+
 
     @Before
     public void setUpsForTest(){
@@ -27,9 +28,9 @@ public class LogInLogOutTests extends BaseTest {
     @Description("Проверка входа с главной страницы портала по кнопке 'Войти в аккаунт'")
     public void logInFromMainPageLogInButton(){
         mainPage.clickOnMainPageLogInButton();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
-        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user));
+        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user.getEmail()));
     }
 
     @Test
@@ -37,9 +38,9 @@ public class LogInLogOutTests extends BaseTest {
     @Description("Проверка входа с главной страницы портала по кнопке 'Личный кабинет' в заголовке сайта")
     public void logInFromMainPageHeaderLogInButton(){
         mainPage.clickOnMainPageHeaderLogInButton();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
-        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user));
+        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user.getEmail()));
     }
     @Test
     @DisplayName("Вход через кнопку в форме регистрации")
@@ -48,9 +49,9 @@ public class LogInLogOutTests extends BaseTest {
         mainPage.clickOnMainPageLogInButton();
         loginPage.clickOnRegistrationButton();
         signUpPage.clickOnEnterButtonInSignUpPage();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
-        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user));
+        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user.getEmail()));
     }
 
     @Test
@@ -60,9 +61,9 @@ public class LogInLogOutTests extends BaseTest {
         mainPage.clickOnMainPageLogInButton();
         loginPage.clickOnRecoverPasswordButton();
         restorePassPage.restoreEnterButtonClick();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
-        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user));
+        Assert.assertTrue("Email пользователя не совпадает", profilePage.userCorrectlyAuth(user.getEmail()));
     }
 
     @Test
@@ -70,7 +71,7 @@ public class LogInLogOutTests extends BaseTest {
     @Description("Проверка выхода авторизованного пользователя из УЗ")
     public void logOutUserTest() {
         mainPage.clickOnMainPageLogInButton();
-        loginPage.fillUsersDataToLogIn(user);
+        loginPage.fillUsersDataToLogIn(user.getEmail(), user.getPassword());
         mainPage.clickOnMainPageHeaderLogInButton();
         profilePage.clickOnExitButton();
         Assert.assertTrue("Вы не вышли из своего личного кабинета", loginPage.userExitCheck());

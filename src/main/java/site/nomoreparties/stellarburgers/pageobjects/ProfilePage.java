@@ -1,4 +1,4 @@
-package site.nomoreparties.stellarburgers.page.objects;
+package site.nomoreparties.stellarburgers.pageobjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -30,7 +30,7 @@ public class ProfilePage {
 
     @Step("Клик по кнопке 'Выход'")
     public void clickOnExitButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(6))
+        new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(exitButton));
         driver.findElement(exitButton).click();
     }
@@ -41,9 +41,9 @@ public class ProfilePage {
     }
 
     @Step("Проверка что пользователь авторизован")
-    public boolean userCorrectlyAuth(UserModel user){
+    public boolean userCorrectlyAuth(String userEmail){
         Boolean correctEmail = new WebDriverWait(driver, Duration.ofSeconds(8))
-                .until(ExpectedConditions.textToBePresentInElementValue(profileEmail, user.getEmail()));
+                .until(ExpectedConditions.textToBePresentInElementValue(profileEmail, userEmail));
         return correctEmail;
     }
 }
